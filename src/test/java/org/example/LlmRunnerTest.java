@@ -57,6 +57,11 @@ public class LlmRunnerTest {
                     .assertThat()
                     .body("tags.size()", equalTo(1));
             
+            RestAssured.get("/engines/v1/models")
+                    .prettyPeek()
+                    .then()
+                    .statusCode(200);
+            
             RestAssured.delete("/models/ignaciolopezluna020/llama3.2:1b")
                     .prettyPeek()
                     .then()
@@ -68,6 +73,7 @@ public class LlmRunnerTest {
                     .statusCode(200)
                     .assertThat()
                     .body("size()", equalTo(0));
+            
         }
     }
     
