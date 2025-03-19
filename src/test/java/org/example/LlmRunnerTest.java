@@ -4,6 +4,7 @@ import io.restassured.RestAssured;
 import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.SocatContainer;
 
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 
 public class LlmRunnerTest {
@@ -17,10 +18,19 @@ public class LlmRunnerTest {
             
             RestAssured.baseURI = "http://%s:%d".formatted(socat.getHost(), llmRunnerPort);
 
+            RestAssured.get("/")
+                    .prettyPeek()
+                    .then()
+                    .statusCode(200)
+                    .assertThat()
+                    .body(containsString("The service is running."));
+            
             RestAssured.get("/models")
                     .prettyPeek()
                     .then()
-                    .statusCode(200);
+                    .statusCode(200)
+                    .assertThat()
+                    .body("size()", equalTo(0));
             
             RestAssured.given()
                     .body("""
@@ -39,6 +49,13 @@ public class LlmRunnerTest {
                     .statusCode(200)
                     .assertThat()
                     .body("size()", equalTo(1));
+
+            RestAssured.get("/models/ignaciolopezluna020/llama3.2:1b")
+                    .prettyPeek()
+                    .then()
+                    .statusCode(200)
+                    .assertThat()
+                    .body("tags.size()", equalTo(1));
             
             RestAssured.delete("/models/ignaciolopezluna020/llama3.2:1b")
                     .prettyPeek()
