@@ -34,21 +34,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
-                  properties:
-                    id:
-                      type: string
-                    tags:
-                      type: array
-                      items:
-                        type: string
-                    files:
-                      type: array
-                      items:
-                        type: string
-                    created:
-                      type: integer
-                      format: int64
+                  $ref: '#/components/schemas/Model'
 
   /models/{namespace}/{name}:
     get:
@@ -70,21 +56,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: string
-                  tags:
-                    type: array
-                    items:
-                      type: string
-                  files:
-                    type: array
-                    items:
-                      type: string
-                  created:
-                    type: integer
-                    format: int64
+                $ref: '#/components/schemas/Model'
 
     delete:
       summary: Delete a model
@@ -112,22 +84,43 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  object:
-                    type: string
-                  data:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                        object:
-                          type: string
-                        created:
-                          type: integer
-                          format: int64
-                        owned_by:
-                          type: string
+                $ref: '#/components/schemas/ModelList'
 
+components:
+  schemas:
+    Model:
+      type: object
+      properties:
+        id:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        files:
+          type: array
+          items:
+            type: string
+        created:
+          type: integer
+          format: int64
+
+    ModelList:
+      type: object
+      properties:
+        object:
+          type: string
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              object:
+                type: string
+              created:
+                type: integer
+                format: int64
+              owned_by:
+                type: string

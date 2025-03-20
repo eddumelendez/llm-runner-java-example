@@ -1,10 +1,10 @@
 package org.example;
 
 import com.docker.llmrunner.api.LlmRunnerClient;
-import com.docker.llmrunner.api.engines.v1.modelsrequests.ModelsGetResponse;
-import com.docker.llmrunner.api.engines.v1.modelsrequests.ModelsGetResponseData;
+import com.docker.llmrunner.api.models.Model;
+import com.docker.llmrunner.api.models.ModelList;
+import com.docker.llmrunner.api.models.ModelListData;
 import com.docker.llmrunner.api.modelsrequests.create.CreatePostRequestBody;
-import com.docker.llmrunner.api.modelsrequests.item.item.WithNameGetResponse;
 import com.microsoft.kiota.authentication.AnonymousAuthenticationProvider;
 import com.microsoft.kiota.bundle.DefaultRequestAdapter;
 import io.restassured.RestAssured;
@@ -49,12 +49,12 @@ public class LlmRunnerTest {
 
             assertThat(client.models().get()).hasSize(1);
 
-            WithNameGetResponse model = client.models().byNamespace("ignaciolopezluna020").byName("llama3.2:1b").get();
+            Model model = client.models().byNamespace("ignaciolopezluna020").byName("llama3.2:1b").get();
             assertThat(model.getTags()).hasSize(1);
             assertThat(model.getTags()).contains("ignaciolopezluna020/llama3.2:1b");
 
-            ModelsGetResponse modelsGetResponse = client.engines().v1().models().get();
-            List<ModelsGetResponseData> data = modelsGetResponse.getData();
+            ModelList models = client.engines().v1().models().get();
+            List<ModelListData> data = models.getData();
             assertThat(data.get(0).getId()).isEqualTo("ignaciolopezluna020/llama3.2:1b");
             assertThat(data.get(0).getObject()).isEqualTo("model");
             

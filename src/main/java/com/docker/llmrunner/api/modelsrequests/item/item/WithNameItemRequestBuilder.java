@@ -1,5 +1,6 @@
 package com.docker.llmrunner.api.modelsrequests.item.item;
 
+import com.docker.llmrunner.api.models.Model;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
 import com.microsoft.kiota.HttpMethod;
@@ -54,21 +55,21 @@ public class WithNameItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Get model details
-     * @return a {@link WithNameGetResponse}
+     * @return a {@link Model}
      */
     @jakarta.annotation.Nullable
-    public WithNameGetResponse get() {
+    public Model get() {
         return get(null);
     }
     /**
      * Get model details
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a {@link WithNameGetResponse}
+     * @return a {@link Model}
      */
     @jakarta.annotation.Nullable
-    public WithNameGetResponse get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
+    public Model get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, WithNameGetResponse::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, null, Model::createFromDiscriminatorValue);
     }
     /**
      * Delete a model

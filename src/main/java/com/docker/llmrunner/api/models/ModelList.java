@@ -1,4 +1,4 @@
-package com.docker.llmrunner.api.engines.v1.modelsrequests;
+package com.docker.llmrunner.api.models;
 
 import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 @jakarta.annotation.Generated("com.microsoft.kiota")
-public class ModelsGetResponse implements AdditionalDataHolder, Parsable {
+public class ModelList implements AdditionalDataHolder, Parsable {
     /**
      * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      */
@@ -16,26 +16,26 @@ public class ModelsGetResponse implements AdditionalDataHolder, Parsable {
     /**
      * The data property
      */
-    private java.util.List<ModelsGetResponseData> data;
+    private java.util.List<ModelListData> data;
     /**
      * The object property
      */
     private String objectEscaped;
     /**
-     * Instantiates a new {@link ModelsGetResponse} and sets the default values.
+     * Instantiates a new {@link ModelList} and sets the default values.
      */
-    public ModelsGetResponse() {
+    public ModelList() {
         this.setAdditionalData(new HashMap<>());
     }
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a {@link ModelsGetResponse}
+     * @return a {@link ModelList}
      */
     @jakarta.annotation.Nonnull
-    public static ModelsGetResponse createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
+    public static ModelList createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
         Objects.requireNonNull(parseNode);
-        return new ModelsGetResponse();
+        return new ModelList();
     }
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -47,10 +47,10 @@ public class ModelsGetResponse implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the data property value. The data property
-     * @return a {@link java.util.List<ModelsGetResponseData>}
+     * @return a {@link java.util.List<ModelListData>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<ModelsGetResponseData> getData() {
+    public java.util.List<ModelListData> getData() {
         return this.data;
     }
     /**
@@ -60,7 +60,7 @@ public class ModelsGetResponse implements AdditionalDataHolder, Parsable {
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
-        deserializerMap.put("data", (n) -> { this.setData(n.getCollectionOfObjectValues(ModelsGetResponseData::createFromDiscriminatorValue)); });
+        deserializerMap.put("data", (n) -> { this.setData(n.getCollectionOfObjectValues(ModelListData::createFromDiscriminatorValue)); });
         deserializerMap.put("object", (n) -> { this.setObject(n.getStringValue()); });
         return deserializerMap;
     }
@@ -93,7 +93,7 @@ public class ModelsGetResponse implements AdditionalDataHolder, Parsable {
      * Sets the data property value. The data property
      * @param value Value to set for the data property.
      */
-    public void setData(@jakarta.annotation.Nullable final java.util.List<ModelsGetResponseData> value) {
+    public void setData(@jakarta.annotation.Nullable final java.util.List<ModelListData> value) {
         this.data = value;
     }
     /**

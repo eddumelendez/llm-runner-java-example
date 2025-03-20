@@ -1,5 +1,6 @@
 package com.docker.llmrunner.api.modelsrequests;
 
+import com.docker.llmrunner.api.models.Model;
 import com.docker.llmrunner.api.modelsrequests.create.CreateRequestBuilder;
 import com.docker.llmrunner.api.modelsrequests.item.WithNamespaceItemRequestBuilder;
 import com.microsoft.kiota.BaseRequestBuilder;
@@ -57,21 +58,21 @@ public class ModelsRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * List all models
-     * @return a {@link java.util.List<Models>}
+     * @return a {@link java.util.List<Model>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<Models> get() {
+    public java.util.List<Model> get() {
         return get(null);
     }
     /**
      * List all models
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a {@link java.util.List<Models>}
+     * @return a {@link java.util.List<Model>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<Models> get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
+    public java.util.List<Model> get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.sendCollection(requestInfo, null, Models::createFromDiscriminatorValue);
+        return this.requestAdapter.sendCollection(requestInfo, null, Model::createFromDiscriminatorValue);
     }
     /**
      * List all models

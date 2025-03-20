@@ -1,5 +1,6 @@
 package com.docker.llmrunner.api.engines.v1.modelsrequests;
 
+import com.docker.llmrunner.api.models.ModelList;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
 import com.microsoft.kiota.HttpMethod;
@@ -35,21 +36,21 @@ public class ModelsRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * List available models
-     * @return a {@link ModelsGetResponse}
+     * @return a {@link ModelList}
      */
     @jakarta.annotation.Nullable
-    public ModelsGetResponse get() {
+    public ModelList get() {
         return get(null);
     }
     /**
      * List available models
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a {@link ModelsGetResponse}
+     * @return a {@link ModelList}
      */
     @jakarta.annotation.Nullable
-    public ModelsGetResponse get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
+    public ModelList get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, ModelsGetResponse::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, null, ModelList::createFromDiscriminatorValue);
     }
     /**
      * List available models
