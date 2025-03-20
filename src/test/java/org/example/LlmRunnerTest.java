@@ -23,7 +23,7 @@ public class LlmRunnerTest {
     @Test
     void test() throws IOException {
         try (SocatContainer socat = new SocatContainer()
-                .withTarget(80, "model-runner.docker.internal", 80)) {
+                .withTarget(80, "model-runner.docker.internal")) {
             socat.start();
             Integer llmRunnerPort = socat.getMappedPort(80);
             String baseUri = "http://%s:%d".formatted(socat.getHost(), llmRunnerPort);
